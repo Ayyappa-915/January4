@@ -3,22 +3,33 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* BACKGROUND */
+/* BACKGROUND (BLACK LIKE IMAGE) */
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(
-    circle at top,
-    #ff6fae 0%,
-    #c7377a 45%,
-    #4b0f2f 100%
-  );
+  background: #000;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  position: relative;
 }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* NEON BLUE EDGE GLOW */
+  box-shadow:
+    inset 0 0 25px rgba(0,160,255,0.6),
+    inset 0 0 80px rgba(0,160,255,0.7),
+    inset 0 0 140px rgba(0,160,255,0.8),
+    inset 0 0 300px rgba(0,160,255,0.9);
+}
+
 
 /* CONTAINER */
 .container {
@@ -28,18 +39,19 @@ body {
   text-align: center;
 }
 
-/* TITLE */
+/* 🔵 TITLE — BLUE GLOW LIKE IMAGE */
 .title {
   font-size: clamp(1.4rem, 6vw, 2.2rem);
   font-weight: 700;
   white-space: nowrap;
+  color: #fff;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 1.5s;
   text-shadow:
-    0 0 12px #ffffff,
-    0 0 32px #ff66cc,
-    0 0 70px rgba(255,105,180,0.9);
+    0 0 6px rgba(0,160,255,0.6),
+    0 0 16px rgba(0,160,255,0.8),
+    0 0 32px rgba(0,160,255,1);
 }
 
 /* NAME + SUFFIX */
@@ -47,40 +59,43 @@ body {
   display: flex;
   justify-content: center;
   align-items: baseline;
-  gap: clamp(4px, 1.5vw, 10px);
+  gap: clamp(6px, 2vw, 10px);
   margin-top: clamp(6px, 2vw, 12px);
-  flex-wrap: wrap; /* safety for very small screens */
+  flex-wrap: wrap;
 }
 
+/* 🔵 NAME */
 .name {
   font-size: clamp(1.8rem, 7vw, 2.5rem);
   font-weight: 800;
+  color: #fff;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 2.2s;
   text-shadow:
-    0 0 16px #ffffff,
-    0 0 42px #ff66cc,
-    0 0 90px rgba(255,102,204,1);
+    0 0 8px rgba(0,160,255,0.7),
+    0 0 20px rgba(0,160,255,0.9),
+    0 0 40px rgba(0,160,255,1);
 }
 
+/* 🔵 SUFFIX */
 .suffix {
   font-size: clamp(0.9rem, 4vw, 1.3rem);
-  text-transform: lowercase;
   font-style: italic;
   font-weight: bold;
+  color: #fff;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 2.8s;
   text-shadow:
-    0 0 14px #ffd6ec,
-    0 0 30px #ff9ad5;
+    0 0 6px rgba(0,160,255,0.6),
+    0 0 14px rgba(0,160,255,0.8);
 }
 
-/* PHOTO FRAME (RESPONSIVE SIZE) */
+/* 🔵 PHOTO FRAME — SAME AS IMAGE */
 .photo-frame {
-  width: clamp(150px, 55vw, 200px);
-  height: clamp(150px, 55vw, 200px);
+  width: clamp(160px, 55vw, 220px);
+  height: clamp(160px, 55vw, 220px);
   margin: clamp(20px, 6vw, 30px) auto;
   border-radius: 50%;
   position: relative;
@@ -91,23 +106,26 @@ body {
   opacity: 0;
   animation: revealScale 2s ease forwards;
   animation-delay: 4s;
+
+  /* OUTER BLUE HALO */
+  box-shadow:
+    0 0 20px rgba(0,160,255,0.7),
+    0 0 50px rgba(0,160,255,0.8),
+    0 0 120px rgba(0,160,255,1);
 }
 
-/* NEON RING */
+/* BLUE NEON RING */
 .photo-frame::before {
   content: '';
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: clamp(2px, 0.8vw, 3px) solid #ff4fa3;
+  border: clamp(3px, 0.8vw, 4px) solid #1ea7ff;
 
   box-shadow:
-    0 0 10px #ff4fa3,
-    0 0 25px #ff4fa3,
-    0 0 45px rgba(255,79,163,0.9),
-    0 0 70px rgba(255,79,163,0.7);
-
-  animation: neonRingPulse 3s ease-in-out infinite;
+    0 0 5px #1ea7ff,
+    0 0 5px #1ea7ff,
+    0 0 5px rgba(30,167,255,1);
 }
 
 /* PHOTO */
@@ -128,27 +146,40 @@ body {
   display: block;
 }
 
-/* MESSAGE */
+/* 🔵 MESSAGE BOX — BLUE GLOW */
 .message {
+  width: 100%;
+  max-width: min(100vw, 420px); /* fits mobile screens */
+  margin: clamp(16px, 5vw, 22px) auto 0;
+
+  padding-inline: clamp(12px, 5vw, 20px); /* left & right spacing */
+  
   font-size: clamp(0.95rem, 4vw, 1.05rem);
-  line-height: clamp(1.5, 1.7, 1.8);
-  background: rgba(255, 255, 255, 0.12);
-  padding: clamp(14px, 4vw, 18px);
-  border-radius: 20px;
-  margin-top: clamp(16px, 5vw, 22px);
+  line-height: 1.7;
+  color: #fff;
+
+  text-align: justify; /* left → right alignment */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 6s;
-  box-shadow: 0 0 25px rgba(255, 105, 180, 0.45);
-}
 
+  /* SAME BLUE GLOW AS NAME */
+  text-shadow:
+    0 0 8px rgba(0,160,255,0.7),
+    0 0 20px rgba(0,160,255,0.9),
+    0 0 40px rgba(0,160,255,1);
+}
 /* HEARTS */
 .heart {
   position: absolute;
-  color: #ff7ac8;
+  color: #e676c0;
   animation: floatUp linear infinite;
 }
 
+/* CANVAS */
 canvas {
   position: absolute;
   inset: 0;
@@ -170,21 +201,4 @@ canvas {
   0% { transform: translateY(110vh); opacity: 0; }
   20% { opacity: 1; }
   100% { transform: translateY(-10vh); opacity: 0; }
-}
-
-@keyframes neonRingPulse {
-  0%, 100% {
-    box-shadow:
-      0 0 10px #ff4fa3,
-      0 0 25px #ff4fa3,
-      0 0 45px rgba(255,79,163,0.9),
-      0 0 70px rgba(255,79,163,0.7);
-  }
-  50% {
-    box-shadow:
-      0 0 15px #ff6fb7,
-      0 0 35px #ff6fb7,
-      0 0 60px rgba(255,111,183,1),
-      0 0 90px rgba(255,111,183,0.85);
-  }
 }
