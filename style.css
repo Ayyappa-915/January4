@@ -6,7 +6,7 @@
 /* BACKGROUND (BLACK LIKE IMAGE) */
 body {
   margin: 0;
-  min-height: 90vh;
+  min-height: 80vh;
   background: #000;
   overflow: hidden;
   display: flex;
@@ -52,6 +52,8 @@ body::before {
     0 0 6px rgba(0,160,255,0.6),
     0 0 16px rgba(0,160,255,0.8),
     0 0 32px rgba(0,160,255,1);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
 }
 
 /* NAME + SUFFIX */
@@ -76,6 +78,8 @@ body::before {
     0 0 8px rgba(0,160,255,0.7),
     0 0 20px rgba(0,160,255,0.9),
     0 0 40px rgba(0,160,255,1);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
 }
 
 /* 🔵 SUFFIX */
@@ -90,6 +94,8 @@ body::before {
   text-shadow:
     0 0 6px rgba(0,160,255,0.6),
     0 0 14px rgba(0,160,255,0.8);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
 }
 
 /* 🔵 PHOTO FRAME — SAME AS IMAGE */
@@ -148,13 +154,12 @@ body::before {
 
 /* 🔵 MESSAGE BOX — BLUE GLOW */
 .message {
-  width: 100%;
-  max-width: min(100vw, 420px); /* fits mobile screens */
+  width: 90%;
   margin: clamp(16px, 5vw, 22px) auto 0;
 
-  padding-inline: clamp(12px, 5vw, 20px); /* left & right spacing */
+  /* left & right spacing */
   
-  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  font-size: clamp(0.9rem, 4vw, 1.3rem);
   line-height: 1.7;
   color: #fff;
 
@@ -165,7 +170,8 @@ body::before {
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 6s;
-
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
   /* SAME BLUE GLOW AS NAME */
   text-shadow:
     0 0 8px rgba(0,160,255,0.7),
@@ -173,21 +179,25 @@ body::before {
     0 0 40px rgba(0,160,255,1);
 }
 /* HEARTS */
+/* 💙 NEON BLUE HEART WITH WHITE CORE + PULSE */
 .heart {
   position: absolute;
-  color: #ffffff; /* WHITE HEART */
+  color: #ffffff; /* white heart */
   font-size: 20px;
 
-  /* NEON BLUE GLOW */
   text-shadow:
     0 0 6px rgba(0,160,255,0.7),
     0 0 14px rgba(0,160,255,0.9),
     0 0 28px rgba(0,160,255,1),
     0 0 50px rgba(0,160,255,1);
 
-  animation: floatUp linear infinite;
+  animation:
+    floatUp linear infinite,
+    heartPulse 2.5s ease-in-out infinite;
+
   pointer-events: none;
 }
+
 
 /* CANVAS */
 canvas {
@@ -212,4 +222,3 @@ canvas {
   20% { opacity: 1; }
   100% { transform: translateY(-10vh); opacity: 0; }
 }
-
