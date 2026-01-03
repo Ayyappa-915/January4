@@ -6,7 +6,7 @@
 /* BACKGROUND (BLACK LIKE IMAGE) */
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 80vh;
   background: #000;
   overflow: hidden;
   display: flex;
@@ -41,21 +41,29 @@ body::before {
 
 /* 🔵 TITLE — BLUE GLOW LIKE IMAGE */
 .title {
-  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  font-size: clamp(1.6rem, 6.5vw, 2.3rem);
   font-weight: 700;
   white-space: nowrap;
-  color: #fff;
   opacity: 0;
-  animation: revealGlow 2s ease forwards;
-  animation-delay: 1.5s;
-  text-shadow:
-    0 0 6px rgba(0,160,255,0.6),
-    0 0 16px rgba(0,160,255,0.8),
-    0 0 32px rgba(0,160,255,1);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: oblique;
-}
+  animation: revealGlow 2s ease forwards, shimmer 6s linear infinite;
+  animation-delay: 1.5s, 3s;
 
+  font-family: Cambria, Georgia, serif;
+  font-style: oblique;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #9fdcff,
+    #ffffff
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 14px rgba(0,160,255,0.8),
+    0 0 28px rgba(0,160,255,1);
+}
 /* NAME + SUFFIX */
 .name-line {
   display: flex;
@@ -66,39 +74,50 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* 🔵 NAME */
 .name {
-  font-size: clamp(1.8rem, 7vw, 2.5rem);
+  font-size: clamp(2.2rem, 8vw, 2.8rem);
   font-weight: 800;
-  color: #fff;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 2.2s;
+
+  font-family: Cambria, Georgia, serif;
+  font-style: oblique;
+
   text-shadow:
-    0 0 8px rgba(0,160,255,0.7),
-    0 0 20px rgba(0,160,255,0.9),
-    0 0 40px rgba(0,160,255,1);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: oblique;
+    0 0 12px rgba(0,160,255,0.9),
+    0 0 30px rgba(0,160,255,1),
+    0 0 60px rgba(0,160,255,1);
 }
 
+/* subtle underline glow */
+.name::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 60%;
+  margin: 6px auto 0;
+  background: linear-gradient(90deg, transparent, #1ea7ff, transparent);
+  box-shadow: 0 0 12px #1ea7ff;
+}
 /* 🔵 SUFFIX */
 .suffix {
-  font-size: clamp(0.9rem, 4vw, 1.3rem);
-  font-style: italic;
+  font-size: clamp(1.2rem, 4.8vw, 1.4rem);
   font-weight: bold;
-  color: #fff;
+  font-style: italic;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 2.8s;
+
+  font-family: Cambria, Georgia, serif;
+
   text-shadow:
-    0 0 6px rgba(0,160,255,0.6),
-    0 0 14px rgba(0,160,255,0.8);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: oblique;
+    0 0 10px rgba(0,160,255,0.8),
+    0 0 20px rgba(0,160,255,1);
 }
 
 /* 🔵 PHOTO FRAME — SAME AS IMAGE */
+/* PHOTO FRAME */
 .photo-frame {
   width: clamp(160px, 55vw, 220px);
   height: clamp(160px, 55vw, 220px);
@@ -151,34 +170,24 @@ body::before {
   border-radius: 50%;
   display: block;
 }
-
-/* 🔵 MESSAGE BOX — BLUE GLOW */
 .message {
   width: 90%;
-  margin: clamp(16px, 5vw, 22px) auto 0;
+  margin: 24px auto 0;
 
-  /* left & right spacing */
-  
-  font-size: clamp(0.9rem, 4vw, 1.3rem);
-  line-height: 1.7;
-  color: #fff;
-
-  text-align: justify; /* left → right alignment */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
+  font-size: clamp(1.2rem, 4.8vw, 1.4rem);
+  line-height: 1.8;
+  text-align: justify;
   opacity: 0;
   animation: revealGlow 2s ease forwards;
   animation-delay: 6s;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: oblique;
-  /* SAME BLUE GLOW AS NAME */
+
+  font-family: Cambria, Georgia, serif;
+  font-style: oblique;
+
   text-shadow:
-    0 0 8px rgba(0,160,255,0.7),
-    0 0 20px rgba(0,160,255,0.9),
-    0 0 40px rgba(0,160,255,1);
+    0 0 10px rgba(0,160,255,0.7),
+    0 0 22px rgba(0,160,255,1);
 }
-/* HEARTS */
 /* 💙 NEON BLUE HEART WITH WHITE CORE + PULSE */
 .heart {
   position: absolute;
@@ -222,4 +231,3 @@ canvas {
   20% { opacity: 1; }
   100% { transform: translateY(-10vh); opacity: 0; }
 }
-
